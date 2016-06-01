@@ -33,5 +33,7 @@ defmodule RealChat.Endpoint do
     key: "_real_chat_key",
     signing_salt: "oUGPK8Qx"
 
+  plug CORSPlug
+  
   plug RealChat.Router
 end
