@@ -8,7 +8,8 @@ use Mix.Config
 # Configures the endpoint
 config :real_chat, RealChat.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "localhost", port: 80],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: "real-chat-rtc-server.herokuapp.com", port: 443],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   cache_static_manifest: "priv/static/manifest.json",
   render_errors: [accepts: ~w(json)],
@@ -21,7 +22,7 @@ config :real_chat, RealChat.Repo,
   pool_size: 20
 
 # Do not print debug messages in production
-config logger,
+config :logger,
   level: :info
 
 # Configures Elixir's Logger
