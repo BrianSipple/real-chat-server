@@ -7,12 +7,22 @@ use Mix.Config
 
 # Configures the endpoint
 config :real_chat, RealChat.Endpoint,
-  url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
-  secret_key_base: "xxSolJzACbI0+z61tgYEIlnrsUbKpGGBF7sdipRgnVXGe9nPS7YRfUjWEdPdVx8t",
+  http: [port: {:system, "PORT"}],
+  url: [host: "localhost", port: 80],
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  cache_static_manifest: "priv/static/manifest.json",
   render_errors: [accepts: ~w(json)],
   pubsub: [name: RealChat.PubSub,
            adapter: Phoenix.PubSub.PG2]
+
+config :real_chat, RealChat.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
+  pool_size: 20
+
+# Do not print debug messages in production
+config logger,
+  level: :info
 
 # Configures Elixir's Logger
 config :logger, :console,
