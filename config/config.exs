@@ -11,10 +11,6 @@ config :real_chat, RealChat.Endpoint,
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   url: [host: "real-chat-rtc-server.herokuapp.com", port: 443],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  cache_static_manifest: "priv/static/manifest.json",
-  render_errors: [accepts: ~w(json)],
-  pubsub: [name: RealChat.PubSub,
-           adapter: Phoenix.PubSub.PG2]
 
 config :real_chat, RealChat.Repo,
   adapter: Ecto.Adapters.Postgres,
