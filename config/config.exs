@@ -10,7 +10,7 @@ config :real_chat, RealChat.Endpoint,
   http: [port: {:system, "PORT"}],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   url: [host: "real-chat-rtc-server.herokuapp.com", port: 443],
-  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 config :real_chat, RealChat.Repo,
   adapter: Ecto.Adapters.Postgres,
