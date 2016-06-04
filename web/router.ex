@@ -7,7 +7,10 @@ defmodule RealChat.Router do
 
   scope "/api", RealChat do
     pipe_through :api
+    # Registration
+    post "register", RegistrationController, :create
     # Route to our SessionController
     resources "session", SessionController, only: [:index]
+
   end
 end
