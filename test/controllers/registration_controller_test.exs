@@ -4,9 +4,9 @@ defmodule RealChat.RegistrationControllerTest do
   alias RealChat.User
 
   @valid_attrs %{
-    email: "brian@example.com",
-    password: "seattle12",
-    password_confirmation: "seattle12"
+    "email": "brian@example.com",
+    "password": "seattle12",
+    "password-confirmation": "seattle12"
   }
 
   @invalid_attrs %{}
@@ -16,7 +16,7 @@ defmodule RealChat.RegistrationControllerTest do
   end
 
   test "creating and rendering a resource when data is valid", %{conn: conn} do
-    conn = post conn, registration_path(conn, :create), %{data: %{type: "user",
+    conn = post conn, registration_path(conn, :create), %{data: %{type: "users",
       attributes: @valid_attrs
       }}
     assert json_response(conn, 201)["data"]["id"]

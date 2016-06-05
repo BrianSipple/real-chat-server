@@ -1,0 +1,7 @@
+curl -XPOST -H "Content-type: application/json" -d '{"data": {
+  "type": "users", "attributes": {
+    "email": "brian@example.com",
+    "password": "seattle12",
+    "password-confirmation": "seattle12"
+  }
+}}' 'http://localhost:4000/api/register'
