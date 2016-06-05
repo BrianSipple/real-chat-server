@@ -34,6 +34,7 @@ defmodule RealChat.Mixfile do
      {:phoenix_ecto, "~> 2.0"},
      {:postgrex, ">= 0.0.0"},
      {:cors_plug, "~> 1.1"},
+     {:ja_serializer, "~> 0.9.0"},
      {:comeonin, "~> 2.4"},
      {:gettext, "~> 0.9"},
      {:guardian, "~> 0.10.0"},
