@@ -1,16 +1,17 @@
 language: elixir
-
 elixir:
-  - 1.2
-
+- 1.2
 otp_release:
-  - 18.2
-
+- 18.2
 sudo: false
-
 addons:
- postgresql: '9.4' # Use postgres 9.4
-
+  postgresql: '9.4'
 before_script:
-  # Create the test DB
-  - psql -c 'create database realchat_test;' -U postgres
+- psql -c 'create database realchat_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: gLkmLO/knEQJcLWY6reO4sfydVzWn2bkTvxNQMPj6KbbKOolHMSzoSgr+FPbB7RZ7ySHtV5k08YalNB0dbvV6thMlFaqTxiNFC2jlduvkahjqUjVlx4yEliREXIVNkqZowKXttDAMhFqdWDOqhUBAF7D30XNi0QEntF5JoKoeY/W/IqYIUqRaVwwyK7Qp/pQ5+df89S/ZminNbYXz0SfHPAprfHtJ6xKRreSIS0nPQ7ADYF+GWyr+hGIYKA6YWHZ2hAWTD2OW7Zdjmb0OSIMJQGOp7IcBDTZHNsqYRwQ+nl32WmSCq3oZM8+fhcLBcAQuDmbAJ10FjXp/urmpN2olxI42pB0Qv7gUowCt9ix/Xj3+M0TvN1bXRKS9yGkd+qRg4nHuTL1GQYBYCDqcT8fKLPBeNrrGYp9ll+jAEqSzz2YkdBSRLPsSxR8GSN9KjeScyCcsaz1Uit4IbOc39RLqSAy9THD8WS79PFOJuf+P+FztTbcRNGfy9wWiC8yG/ShkJRX0Kcyk6M5v2kAslZc6C+kJ7EDsbjr9QqpY1kZexv+OjdtEneKh8c7vny/Wo1pQnEdU2xQTWN/kpvX2GwUQsoobzuWw1QY1xZl0fr5hThJGqr0bzuea7b28fPZ/UwDw/sEj6V3AW21I047bJDOhh/Tc2rsBc02CfAxhDCZEHY=
+  app: real-chat-rtc-server
+  on:
+    repo: BrianSipple/real-chat-server
