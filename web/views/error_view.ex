@@ -14,7 +14,7 @@ defmodule RealChat.ErrorView do
 
   def render("404.json", _assigns) do
     #%{errors: %{detail: "Page not found"}}
-    %{title: "Not found error", code: 404}
+    %{title: "Page not found", code: 404}
     |> JaSerializer.ErrorSerializer.format
   end
 
