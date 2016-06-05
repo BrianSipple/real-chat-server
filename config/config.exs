@@ -48,7 +48,7 @@ config :guardian, Guardian,
   issuer: "RealChat",
   ttl: { 30, :days },
   verify_issuer: true, # optional
-  secret_key: System.get_env("GUARDIAN_SECRET"),
+  secret_key: System.get_env("GUARDIAN_SECRET") || "A+m5/Ke7iP+Sfwog/Fqr/xxvaA330GesRmHiXNoc3+56oHmT5VeoFpOLYRfEHA7J",
   serializer: RealChat.GuardianSerializer
 
 

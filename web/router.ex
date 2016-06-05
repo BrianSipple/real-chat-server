@@ -9,8 +9,8 @@ defmodule RealChat.Router do
     pipe_through :api
     # Registration
     post "register", RegistrationController, :create
-    # Route to our SessionController
-    resources "session", SessionController, only: [:index]
+    # Route to our SessionController's `create` method (and, within our code, refer to this route as "login")
+    post "token", SessionController, :create, as: :login
 
   end
 end
