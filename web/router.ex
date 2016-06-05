@@ -22,7 +22,7 @@ defmodule RealChat.Router do
   end
 
   # Authenticated routes
-  scope "/api/", RealChat do
+  scope "/api", RealChat do
     pipe_through :api_auth
     # Retrieving the current user
     get "/user/current", UserController, :current
