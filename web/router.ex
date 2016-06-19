@@ -13,7 +13,7 @@ defmodule RealChat.Router do
   end
 
   # Unauthenticated routes
-  scope "/api", RealChat do
+  scope "/api/v1", RealChat do
     pipe_through :api
     # Registration
     post "register", RegistrationController, :create
@@ -22,7 +22,7 @@ defmodule RealChat.Router do
   end
 
   # Authenticated routes
-  scope "/api", RealChat do
+  scope "/api/v1", RealChat do
     pipe_through :api_auth
     # Retrieving the current user
     get "/user/current", UserController, :current
