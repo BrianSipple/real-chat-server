@@ -4,4 +4,4 @@ curl -XPOST -H "Content-type: application/json" -d '{"data": {
     "password": "seattle12",
     "password-confirmation": "seattle12"
   }
-}}' 'http://localhost:4000/api/register'
+}}' 'http://localhost:4000/api/v1/register'
