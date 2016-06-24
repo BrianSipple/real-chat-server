@@ -26,6 +26,7 @@ defmodule RealChat.Router do
     pipe_through :api_auth
     # Retrieving the current user
     get "/user/current", UserController, :current
+    resources "/rooms", RoomController, except: [:new, :edit]  # define a collection of routes to be used by our RoomController
   end
 
 
