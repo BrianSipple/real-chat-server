@@ -1,21 +1,11 @@
 defmodule RealChat.UserView do
   use RealChat.Web, :view
+  use JaSerializer.PhoenixView
 
-  def render("index.json", %{users: users}) do
-    %{data: render_many(users, RealChat.UserView, "user.json")}
-  end
+  attributes [:email]
+  has_many :rooms, link: :rooms_link
 
-  def render("show.json", %{user: user}) do
-    %{data: render_one(user, RealChat.UserView, "user.json")}
-  end
-
-  def render("user.json", %{user: user}) do
-    %{
-        "type": "user",
-        "id": user.id,
-        "attributes": %{
-            "email": user.email
-        }
-    }
+  def rooms_link(user, conn) do
+    user_rooms_url(conn, :index, user.id)
   end
 end

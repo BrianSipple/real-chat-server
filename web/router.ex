@@ -25,7 +25,11 @@ defmodule RealChat.Router do
   scope "/api/v1", RealChat do
     pipe_through :api_auth
     # Retrieving the current user
-    get "/user/current", UserController, :current
+    get "/user/current", UserController, :current, as: :current_user
+    resources "/user", UserController, only: [:show, :index] do
+      get "rooms", RoomController, :index, as: :rooms  # rooms owned by a user
+    end
+    resources "/rooms", RoomController, except: [:new, :edit]  # define a collection of routes to be used by our RoomController
   end
 
 
