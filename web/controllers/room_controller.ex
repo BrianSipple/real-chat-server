@@ -5,8 +5,6 @@ defmodule RealChat.RoomController do
   alias RealChat.Room
 
   plug Guardian.Plug.EnsureAuthenticated, handler: RealChat.AuthErrorHandler
-  plug :scrub_params, "room" when action in [:create, :update]
-
 
   # List of rooms by user
   def index(conn, %{"user_id" => user_id}) do
@@ -43,7 +41,7 @@ defmodule RealChat.RoomController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", room_path(conn, :show, room))
-        |> render("show.json", room: room)
+        |> render("show.json", data: room)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -53,7 +51,7 @@ defmodule RealChat.RoomController do
 
   def show(conn, %{"id" => id}) do
     room = Repo.get!(Room, id)
-    render(conn, "show.json", room: room)
+    render(conn, "show.json", data: room)
   end
 
   # Build the current user’s ID into the query so that only
@@ -74,7 +72,7 @@ defmodule RealChat.RoomController do
 
     case Repo.update(changeset) do
       {:ok, room} ->
-        render(conn, "show.json", room: room)
+        render(conn, "show.json", data: room)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
