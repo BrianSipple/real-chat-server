@@ -8,14 +8,14 @@ defmodule RealChat.RoomControllerTest do
   defp create_test_rooms(user) do
     # Create three rooms owned by the logged in user
     Enum.each ["The Spell Room", "The Elixir Room", "Random Room"], fn name ->
-      Repo.insert! %RealChat.Room{owner_id: user.id, name: name}
+      Repo.insert! %Room{owner_id: user.id, name: name}
     end
 
     # Create two rooms owned by another user
     other_user = Repo.insert! %RealChat.User{}
 
     Enum.each ["Elixir Training", "Elixir Secrets"], fn name ->
-      Repo.insert! %RealChat.Room{owner_id: other_user.id, name: name}
+      Repo.insert! %Room{owner_id: other_user.id, name: name}
     end
   end
 

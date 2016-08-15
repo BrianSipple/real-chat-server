@@ -10,7 +10,7 @@ defmodule RealChat.Repo.Migrations.CreateUser do
     end
 
     # Unique email address constraint, via DB index
-    create index(:users, [:email], unique: true)
+    create unique_index(:users, [:email])
 
   end
 end

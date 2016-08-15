@@ -12,6 +12,6 @@ defmodule RealChat.Repo.Migrations.CreateRoom do
 
     # Unique room names across the whole app
     # (supports implementing a corresponding model-level contraint)
-    create index(:rooms, [:name], unique: true)
+    create unique_index(:rooms, [:name])
   end
 end

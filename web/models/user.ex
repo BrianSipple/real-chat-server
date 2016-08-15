@@ -36,6 +36,6 @@ defmodule RealChat.User do
   defp hash_password(%{valid?: false} = changeset), do: changeset
   defp hash_password(%{valid?: true} = changeset) do
     hashed_password = Comeonin.Bcrypt.hashpwsalt(Ecto.Changeset.get_field(changeset, :password))
-    Ecto.Changeset.put_change(changeset, :password_hash, hashed_password);
+    Ecto.Changeset.put_change(changeset, :password_hash, hashed_password)
   end
 end
